@@ -1,0 +1,62 @@
+printf is a function which will print first argument as it is on the screen 
+That first argument must be there in " ".
+If we have multiple arguments should be seperated with comma.
+If we have format specifier instead of printing it will map with the next argument.
+
+eg: 
+printf("Happy People");     //Happy People
+printf("Happy","People");    //Happy
+printf("Happy" "People");    //HappyPeople
+printf(" " ");               //Compilation error 
+printf(";");                //;
+printf("%d",10);              //10
+printf("%d%d",10,20);        //1020
+printf("%f",1.2);            //1.2000000
+printf(" "Happy " ");        //compilation error
+printf("%d",5.7);            //garpage value - format speciifier is integer but we try to print float 
+printf("%d","A");           //65
+printf("%d %d %d",10,20);       //10 20 Gv
+printf("my age is %d",20);      //my age is 20
+printf("%d %d %d" ,"%d %d",10,20,30,40,50,60);      //Garpage value 10 20 
+
+
+
+Task-1:
+To print some text on the screen with " ":
+#include <stdio.h>
+void  main() {
+   printf("Haii hello ");
+}
+o/p;
+Haii hello 
+
+Task -2:
+To print double qoute " .
+ #include <stdio.h>
+void  main() {
+   printf("\"");
+}
+o/p
+"
+
+Task -3
+print ; without using semicolon in program 
+#include <stdio.h>
+void  main() {
+   if(printf(";")){
+   }
+}
+o/p:
+;
+
+Task -4:
+print text without using semicolon :
+void  main() {
+   if(printf("helloo")){
+   }
+}
+o/p:
+helloo
+
+
+
