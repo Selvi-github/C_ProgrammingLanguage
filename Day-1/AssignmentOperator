@@ -1,0 +1,56 @@
+void  main() {                           //without #include <stdio.h> the program will execute .
+ int a,b,c,d;                            //use " " for stdio.h instead of using <> ,the code also  work perfectly 
+ a=5;
+printf("%d",a);
+}
+o/p:
+5
+-----------------------------
+#include <stdio.h>
+
+void  main() {
+ int a,b,c,d;
+ a=5;
+  b=-4;
+ c=a+b;
+printf("%d %d %d",a,b,c);
+}
+o/p:
+5 -4 1
+
+-----------------------------
+#include <stdio.h>
+
+void  main() {
+ int a,b,c,d;
+a=;
+ 
+printf("%d",a);
+}
+o/p:
+Error:
+   6 | a=;
+      |   ^
+-----------------------------
+#include <stdio.h>
+
+void  main() {
+ int a,b,c,d;
+10=20;
+}
+
+o/p:
+ERROR!
+/tmp/rrJDiP1qpF/main.c: In function 'main':
+/tmp/rrJDiP1qpF/main.c:6:3: error: lvalue required as left operand of assignment
+    6 | 10=20;
+      |   ^
+-----------------------------
+
+Conclusion:
+Assignment operator requires 2 argument or operands 
+Left side argument must be a variable
+Right side argument can be a constant or variable or an expression.
+Left side value is called L-value.
+In c language each and every statement should end with ";" hence ; is called as statement terminator or end of the statement .
+If you violent this rule will get  compilation error saying as statement missing ;.
