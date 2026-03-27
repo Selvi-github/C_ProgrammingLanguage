@@ -1,0 +1,93 @@
+PRIORITY RULE :
+*
++  - 
+=
+
+eg 1: a=5+2*4;  //2*4=8
+     a=5+8;
+     a=13;
+
+When we have multiple operators within the same line which operator should be executed first will depends on the priority rule.
+In the priority rule, Priority will decrease from top to bottom.
+
+eg 2: a=5+2+4;   //5+4=7
+      a=7+4;
+       a=11;
+When we have multiple operators which are belongs to same priority within the same line ,
+in such scenario we need to depend on order of presidence rule
+which tells us to execute the operators from "left" to "right"
+
+eg 3: a=5*2+4;     a=5*(2+4);
+      a=10+4;      a=5*6;
+      a=14;        a=30;
+Brackets are not having any priority just use it to change default priority order.
+
+Division Operator :
+   result of division operator is quotient.
+
+eg 1:   expression | Maths |   Code 
+       ----------------------------------
+        a=5/2;     | 2.5   |   2
+        a=10/3;    | 3.333 |   3
+        a=15/3;    | 5     |   5
+        a=10/2;    | 5     |   5
+
+ If we are performing  any operations between  any 2 arguments ,
+ int - int => int
+ int  - float => float 
+ float - int => float 
+ float  - float => float 
+
+Result sign depends on both numerator and denumerator . (normal mathmatical rules will be applied 
+  eg : -5/2; //-2
+        5/-2 ;  //-2
+       -5/-2;     //2
+
+If you want to eliminate units place digit from any number , that number should be divided with 10 ,
+eg:   1234/10;  //123
+      889/10;    //88
+
+If the value of numerator is less than the denumerator the result will be zero.
+eg:   10/20;    //0
+
+Modulus Operator 
+  Result of the modulus operator is reminder 
+eg : 5%2;   //1
+     10%5;   //0
+     10%3;   //1
+
+Result sign will depends on numerator sign as it is .
+eg :   -5%2;    //-1
+       5%-2;    //1
+      -5%-2;     //-1
+
+If the value of numerator is less then the denumerator the ans is numerator .
+eg :    10%20;    //10
+        100%300;    //100
+
+If you want to extract only one unit place digit from any number , that number can be modulo with 10
+eg :    1234%10;    //4
+
+If we have x%y=10 then we ucan consider x is a multiple of y ,or y is a factor of x.
+eg:    15%3;    //0
+
+eg: program to convert balls into overs 
+    input | output
+     14   |  2.2
+     15   |  2.3
+(  formula : overs = balls / 6 + (balls %6)*0.1  )
+
+#include <stdio.h>
+void  main() {
+    float overs;
+    int balls;
+    scanf("%d",&balls);
+ overs = balls / 6 + (balls%6)*0.1;
+   printf("%f",overs);
+}   
+o/p 
+14
+2.200000
+
+
+
