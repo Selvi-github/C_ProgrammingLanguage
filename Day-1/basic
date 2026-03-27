@@ -1,0 +1,15 @@
+C-Basic:
+
+c is a compiler time based language, Procedural orientedlanguage, it is a mid level langugage.
+
+In c language ,
+step 1: build the compilation : it compiles from top to bottom.(during compile time compiler will check for syntax and symmentics)
+step 2: Execution : it is from main function 
+
+If every lines in the step 1 syntax and symmentic are good then compiler will generate object file.
+
+Process of converting source code to target understandable code is known as compilation process.
+
+Syntax means set of rules and regulations.
+
+Symmentic means checking the meaningless of the code.
