@@ -1,0 +1,33 @@
+Relational operator:
+Result of relational operator is either true or false.
+True or false is belongs to boolean data type.
+Old version of C language doesnot have a support for boolean datetype .Hense , compiler will take true as 1, false as 0.
+In new version of C language boolean support is there.
+< > <= >= == !=
+eg:
+#include <stdio.h>
+void  main() {
+    int a,b;
+    a=10,b=29;
+   printf("%d\n",a>b);   
+     printf("%d\n",a<b); 
+       printf("%d\n",a>=b); 
+         printf("%d\n",a<=b); 
+           printf("%d\n",a==b); 
+             printf("%d\n",a!=b); 
+             
+}
+o/p:
+0
+1
+0
+1
+0
+1
+
+Priority order:
+/ * %
++ _
+< > <= >=
+==  !=
+=
