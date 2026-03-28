@@ -31,3 +31,138 @@ Priority order:
 < > <= >=
 ==  !=
 =
+
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a;
+   a=5*2 >= 5/2 <= 7*2 < 5+2 > 6/2<=7*2>5%2 ==8!=10;
+   printf("%d",a);
+//10 >= 1<=14 <7 >3<=14>1==8!=10;
+//1<=14<7>3<=14>1==8!=10;
+//1<7>3<=14>1==8!=10;
+//1>3<=14>1==8!=10;
+//0<=14>1==8!=10;
+//1>1==8!=10;
+//0==8!=10;
+//0!=10;
+//1
+    return 0;
+}
+1
+=== Code Execution Successful ===
+
+
+Logical operator:
+1) logical AND   &&
+2) logical OR    ||
+3) logical NOT   !
+
+a    b      a&&b      a||b        !a        !b
+0    0      0           0          1         1
+0    1      0           1          1         0
+1    0      0           1          0         1
+1    1      1           1          0         0
+
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a;
+   printf("%d\n",13&&12);
+   printf("%d\n",19&&0);
+   printf("%d\n",0&&12);
+   printf("%d\n",0||0);
+   printf("%d\n",13||12);
+   printf("%d\n",19||0);
+//   printf("%d", ); COMPILATION ERROR 
+   printf("%d\n",19.4&&0.7);
+   printf("%d\n",0.5||0.7);
+   
+    return 0;
+}
+o/p
+1
+0
+0
+0
+1
+1
+1
+1
+=== Code Execution Successful ===
+
+Priority Order updated 
+
+!
+/ * %
+= - 
+< > <= >=
+== !=
+&& 
+||
+=
+
+ex:
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a;
+   a=5;
+   !!!!!a;
+   printf("%d\n",a);
+    return 0;
+}
+op:
+5
+=== Code Execution Successful ===
+
+Real time usage of logical operators :  sign in verification
+{ user name : username || email || mobile number  
+    && 
+password : }
+
+when there n conditions, if you depending on all the conditions then we go for logical AND.
+when there are n conditions, if you are depending on only one conditions , then we need to go for logical OR 
+0(FALSE) && Skip = 0
+1(True) || skip = 1
+
+Short Circuit Operator :
+1) In the case of logical AND if the first arg is '0' that is false , 
+we no need to execute the second arg, we can give the result directly as zero(0);
+2) In the case of logical OR, if first arg is true,then  no need to check the second arg directly we can give the result as one (1).
+3) In the case o logical && ,logical || based on the first arg , we are skipping the execution of the 2nd argument
+Hense, logical && || are called as Short Circuit Operators 
+
+eg :
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a,b,c,d,e;
+  a=10,b=20,c=30,e=0,d=2;
+  c=a||(b=30);
+   printf("%d %d %d  %d %d \n",a,b,c,d,e);
+  d=a&&(0||(a=2));
+   printf("%d %d %d %d %d\n",a,b,c,d,e);
+  e=a&&(b=30);
+   printf("%d %d %d %d %d\n",a,b,c,d,e);
+ 
+    return 0;
+}
+o/p:
+10 20 1  2 0 
+2 20 1 1 0
+2 30 1 1 1
+=== Code Execution Successful ===
+
+
+To print ; without using ;  to the entire program 
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  if(printf("%c",59)){
+      }
+    return 0;
+}
+o/p:
+;
+=== Code Execution Successful ===
