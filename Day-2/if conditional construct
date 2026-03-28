@@ -1,0 +1,50 @@
+1) Based on some condition if you want to do any job then we can go for if conditional construction
+2) If is a keyword which requires a conditions(mandatory)
+3) If the condition is true if body will be executed once.
+4) If the conditions is false if body will skipped.
+5) If programmer is not giving any body {} explicitly, then the compiler will take the body as starts from keyword until the first (;) semicolon. This rule is applicable for if,else,while,for,do.
+6) If we have only one statement in the body then pair {} are also optional.
+7) In C language ,in the place of condition we can write whatever we want , compiler will check either it is 0 or non zero , if it is nonzero treated as true ,
+if it is 0 treated as false
+
+Syntax:
+
+if(condition)------|
+{                  |
+                   |(true)
+if body; <---------|
+
+}
+
+eg:1
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  printf("A");
+  if(3>2){
+      printf("B");
+      printf("C");
+  } printf("D");
+    return 0;
+}
+output: ABCD
+
+=== Code Execution Successful ===
+
+In the above program if the condition is 
+if(320)- answer will be ABCD
+if('a')- answer will become ABCD
+if(0)- answer will be AD
+if(!0)- answer will be ABCD
+if(!(0+1))-answer will be AD
+if(5+2)-answer will be ABCD
+so that if(non-zero) the answer will become ABCD
+if(zero) the answer will become AD
+
+
+
+
+
+
+
+
