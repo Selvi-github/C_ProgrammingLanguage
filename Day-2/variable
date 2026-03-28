@@ -1,0 +1,160 @@
+In any programming language , If you want to use any variable, compulsory we need to defined those variables before using them
+otherwise will get a compilation error , saying as undefined symbol.
+eg: // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a=b=c=d=10;
+  printf("%d %d %d %d %d ",a,b,c,d);
+    return 0;
+}
+output:
+tmp/6xy3MhYN3K/main.c: In function 'main':
+ERROR!
+/tmp/6xy3MhYN3K/main.c:4:9: error: 'b' undeclared (first use in this function)
+    4 |   int a=b=c=d=10;
+      |         ^
+/tmp/6xy3MhYN3K/main.c:4:9: note: each undeclared identifier is reported only once for each function it appears in
+/tmp/6xy3MhYN3K/main.c:4:11: error: 'c' undeclared (first use in this function)
+    4 |   int a=b=c=d=10;
+      |           ^
+ERROR!
+/tmp/6xy3MhYN3K/main.c:4:13: error: 'd' undeclared (first use in this function)
+    4 |   int a=b=c=d=10;
+      | 
+  
+  [ In the above program b,c,d are not defined before using it ]
+
+1)In C langugae we can assign any type of data to any type of variable ,internaly compiler will takecare about conversion. This is called implicite typecasting.
+2)Type casting is converting one type of data to another type .
+3)If compiler will response for that convertion then it is called implicite type casting.
+4)If the programmar is responsible for that conversion that  is explicite typecasting 
+5)Typecasting is temporary.
+6)Each and every assignment operator after assigning right side value to the leftside value it returns assigned  value.
+
+eg:1
+  #include <stdio.h>
+int main() {
+   int a,b,c,d; //definition
+  a=b=c=d=10;    //assigning
+  printf("%d %d %d %d  ",a,b,c,d);  //printing 
+    return 0;
+}
+  output:
+  10 10 10 10  
+=== Code Execution Successful ===
+  
+eg:2
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   int d;
+   d=10;
+  printf("%d ",d);
+    return 0;
+}
+  output:
+  10 
+=== Code Execution Successful ===
+
+when we  defined a variable the control will create a memory for that variable 
+before assigning the value  to that varibale by defult that variable contains garbage value.
+
+eg:3
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   char  d;
+   d='A';
+  printf("%d ",d);
+    return 0;
+}
+  output:
+65 
+=== Code Execution Successful ===
+
+eg:4
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   char  d;
+   d='A';
+  printf("%c ",d);
+    return 0;
+}
+output:
+  A 
+=== Code Execution Successful ===
+
+eg:5
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   float   d;
+   d=3.17;
+  printf("%f ",d);
+    return 0;
+}
+output:
+  3.170000 
+=== Code Execution Successful ===
+
+eg:6
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   int   d;
+   d=3.17;     //we assigning the floating number into int so  the compiler converting the floating point number into integral.
+  printf("%d ",d);  // the program uses implicite typecasting
+    return 0;
+}
+output:
+  3 
+
+=== Code Execution Successful ===
+
+eg:7
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   float   d;
+   d=3.17;
+  printf("%d ",d);     //here the print statement  try to print the value of d but it is  floating value it can't print  using int format specifier so the printf statement will print the garbage value.  
+    return 0;
+}
+output:
+  1457942904 
+
+=== Code Execution Successful ===
+  
+eg:8
+// Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+   float   d;
+   d=3.17;
+  printf("%d ",(int)d);    // in this line we are using explicite type casting 
+    return 0;
+}
+  output:
+  3 
+=== Code Execution Successful ===
+
+eg:9
+  // Online C compiler to run C program online
+#include <stdio.h>
+int main() {
+  int a,b;
+  float c,d;
+  a=b=c=d=3.5;  // here the control will execute from right to left so first 3.5 is assigned to d then the assigned value 3.5 is return to c... 
+  printf("   a-%d\n  b-%d\n  c-%.1f\n  d-%.1f ",a,b,c,d);
+    return 0;
+}
+  output:
+  a-3
+  b-3
+  c-3.5
+  d-3.5 
+
+=== Code Execution Successful ===
+
+
