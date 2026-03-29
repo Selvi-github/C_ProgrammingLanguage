@@ -1,0 +1,53 @@
+What is the different between while and do while ?
+    In while, condition will be checking first, after that the body will be exected.
+   Where as in the case of do while do body will be executed atleast once for the first time without checking any condition.
+
+  Syntax:
+do
+{
+  do body;
+}
+while(condition);
+
+eg:
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+   do{
+       printf("happy people ");
+       a++;
+   }
+  while(a>=5);   //false
+    
+    return 0;
+}
+output:
+happy people 
+
+=== Code Execution Successful ===
+
+eg:
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+   do{
+       printf("happy people ");
+   }
+       a++;   // after do while will be placed immediately
+  while(a>=5);   //false
+    return 0;
+}
+output:
+ERROR!
+/tmp/dJWua2aozN/main.c: In function 'main':
+/tmp/dJWua2aozN/main.c:8:8: error: expected 'while' before 'a'
+    8 |        a++;
+      |        ^
+
+
+=== Code Exited With Errors ===
+  
