@@ -1,0 +1,89 @@
+Syntax:
+for(statement1 ; statement 2; statement 3)      // here statement 1,2,3 are optional for(;;) so we can do like this also
+{     
+      for body;
+}
+  
+ In the for loop statement 1 to 3 can be anything except conditional construct.
+ Statement 1,2,3 can be optional but 2 ;; are mandatory.
+ If programmars not giving any statement 2 that is condition, by defualt the compiler will take this as true 
+ for loops are there in anticlockwise in direction
+ example:
+ // Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   
+         for(int i=0;i<=5;i++){
+         printf("%d",1);}
+         printf("\n");
+          for(int i=0;i<=5;i++){
+         printf("%d",i);}
+          printf("\n");
+          for(int i=0;i<=5;i++){
+         printf("%d",i%2);
+    }
+    
+    return 0;
+}
+output:
+111111
+012345
+010101
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+         for(a++;a++<=7;a++);
+         
+         printf("%d",a);  
+    return 0;
+}
+output:
+9
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1,b=1;
+        printf("%d",a++);
+        printf("%d",++b);
+         printf("%d",a);
+        printf("%d",b);
+    
+    return 0;
+}
+output:
+1222
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+   for(printf("hai");a<=3;printf("hello")){
+       printf("happy");
+   }
+    
+    return 0;
+}
+output:
+haihappyhellohappyhellohappyhellohappyhellohappyhellohappyhellohappyh.............
+
+What is the different between while and for?
+If we don't know the iteration well in advance then we can choose while loop.
+If we know the iteration  well in advance then we can choose for loop.
+To process the linkedlist it is always recommended to use while loop , because size of the linkedlist is not fixed in nature.
+To process the array ,it is always recommended to use for loop becaues size of the array is fixed in nature.
+
+
+
