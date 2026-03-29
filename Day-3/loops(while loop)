@@ -114,5 +114,118 @@ Enter ending number (n2): 6
 
 === Code Execution Successful ===
 
+write a program to print a reverse of  a given number 
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     int a;
+     printf("enter a number \n");
+     scanf("%d",&a);
+     int rev=0,rem;
+     while(a>0){
+         rem=a%10;
+         rev=rem+(rev*10);
+         a=a/10;
+     }
+     printf("%d",rev);
+    return 0;
+}
+output:
+enter a number 
+12345
+54321
+
+=== Code Execution Successful ===
+
+write a program to reverse ,sum ,count of a digit of a number 
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     int a;
+     printf("enter a number \n");
+     scanf("%d",&a);
+     int rev=0,rem,sum=0,count=0;
+     while(a>0){
+         rem=a%10;
+         rev=rem+(rev*10);
+         sum=sum+rem;
+         a=a/10;
+         count++;
+     }
+     printf("Reverse of the given number %d\n",rev);
+      printf("sum of digit  of the given number %d\n",sum);
+       printf("count ofa digit of the given number %d",count);
+    return 0;
+}
+output;
+enter a number 
+1234
+Reverse of the given number 4321
+sum of digit  of the given number 10
+count ofa digit of the given number 4
+
+=== Code Execution Successful ===
+
+write a program to check the number is palindrome or not
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     int a;
+     printf("enter a number \n");
+     scanf("%d",&a);
+     int b=a;
+     int rev=0,rem,sum=0,count=0;
+     while(a>0){
+         rem=a%10;
+         rev=rem+(rev*10);
+         a=a/10;
+     }
+     if(b==rev){
+     printf("The given number is palindrome");
+     }
+     else{     
+         printf("The given number is not a palindrome");
+     }
+    return 0;
+}
+output
+enter a number 
+123
+The given number is not a palindrome
+
+=== Code Execution Successful ===
+
+write a program to print fibonacci series
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     int a,b,n;
+     printf("enter a number \n");
+     scanf("%d",&n);
+    a=0;
+    b=1;
+    int i=2;
+    printf("%d %d ",a,b);
+    while(i<n){
+        int temp=a+b;
+        printf("%d ",temp);
+        a=b;
+        b=temp;
+        i++;
+    }  
+    return 0;
+}
+output:
+enter a number 
+10
+0 1 1 2 3 5 8 13 21 34 
+
+=== Code Execution Successful ===
+
+
 
 
