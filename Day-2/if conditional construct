@@ -41,10 +41,173 @@ if(5+2)-answer will be ABCD
 so that if(non-zero) the answer will become ABCD
 if(zero) the answer will become AD
 
+eg:2
+// Online C compiler to run C program online
+#include <stdio.h>
 
+int main() {                    
+    printf("A");
+    if(3>2)
+    printf("B");
+    printf("C");
+    printf("D");
+    return 0;
+}
+output:
+ABCD
 
+=== Code Execution Successful ===
 
+// Online C compiler to run C program online
+#include <stdio.h>
 
+int main() {
+    printf("A");
+    if(3>20)
+    printf("B");
+    printf("C");
+    printf("D");
+    return 0;
+}
+output:
+ACD
 
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    printf("A");
+    if(!'a')
+    printf("B");
+    printf("C");
+    printf("D");
+    return 0;
+}
+output:
+ACD
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    printf("A");
+    if(3>2); 
+    {
+    printf("B");
+    printf("C");
+    }
+    printf("D");
+    return 0;
+}
+output:
+ABCD
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    printf("A");
+    if(0); 
+    {
+    printf("B");
+    printf("C");
+    }
+    printf("D");
+    return 0;
+}
+output:
+ABCD
+
+=== Code Execution Successful ===
+
+1)write a program to find a max of two integer and display the result on the screen using if condition 
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a,b;
+     printf("Enter 2 number for the variable a,b\n");
+     scanf("%d%d",&a,&b);
+     if(a>b)
+         printf("max is a");
+    if(a<b)
+     printf("max is b");
+     
+    return 0;
+}
+output:
+Enter 2 number for the variable a,b
+2
+4
+max is b
+
+=== Code Execution Successful ===
+
+scanf():
+   scanf is called blocking call or blocking statement untill we hit the enter flow of the program will be stopped at scanf 
+
+Write a program to find the max of 2 integeral display the result on screen by using single if conditional construct 
+#include <stdio.h>
+int main() {
+    int a,b;
+     printf("Enter 2 number for the variable a,b\n");
+     scanf("%d%d",&a,&b);
+     if(a>b)
+         b=a;
+    printf("max value is : %d",b);
+    return 0;
+}
+output:
+Enter 2 number for the variable a,b
+6700
+29
+max value is : 6700
+
+=== Code Execution Successful ===
+
+Write a program to find the max of 2 integer display the result on the screen without using if condition 
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int a,b,max;
+     printf("Enter 2 number for the variable a,b\n");
+     scanf("%d%d",&a,&b);
+     max=(a+b+(abs(a-b)))/2;
+    printf("max value is : %d",max);
+    return 0;
+}
+output:
+Enter 2 number for the variable a,b
+45
+0
+max value is : 45
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int a,b,max;
+     printf("Enter 2 number for the variable a,b\n");
+     scanf("%d%d",&a,&b);
+     max=(a>b)*a+(b>a)*b;
+    printf("max value is : %d",max);
+    return 0;
+}
+output:
+Enter 2 number for the variable a,b
+30
+20
+max value is : 30
+
+=== Code Execution Successful ===
 
 
