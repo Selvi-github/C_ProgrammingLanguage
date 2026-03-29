@@ -1,0 +1,118 @@
+code 
+ |
+repeat
+ |
+continuous
+ |
+loop
+
+ex:if(entered_amount <= Available_amount){
+   printf("please colect your cash");
+else{
+printf("insufficient balance");
+}
+......if we wnt this code runs untill the condition satisfying then go for a loop
+
+Whenever there is a peace of code is repeating continuously in such scenario we are going to use loop
+In C we have 3 available loops,
+1) while
+2) for
+3) do -while //do alone is a keyword not do while is a keyword   
+
+while loop(iterative control)
+Syntax:
+while(condition)  {-------| // true
+     while body;  <-------|
+}
+
+write a program to print 010101
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int count=0,i=0;
+   while(i<=5){
+      printf("%d",i%2);
+      i++;
+   }
+    return 0;
+}
+
+program to print given number of multiplication table
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int i=1;
+   int table;
+   printf("enter..");
+   scanf("%d",&table);
+   while(i<=10){
+       printf("%d*%d=%d\n",i,table,i*table);
+       i=i+1;
+   }
+    return 0;
+}
+output:
+enter..2
+1*2=2
+2*2=4
+3*2=6
+4*2=8
+5*2=10
+6*2=12
+7*2=14
+8*2=16
+9*2=18
+10*2=20
+
+
+=== Code Execution Successful ===
+
+write a program to print series of multiplication table within the range from n1 to n2 
+#include <stdio.h>
+
+int main() {
+    int n1, n2;
+
+    printf("Enter starting number (n1): ");
+    scanf("%d", &n1);
+
+    printf("Enter ending number (n2): ");
+    scanf("%d", &n2);
+
+    int i = 1;  // row (1 to 10)
+
+    while(i <= 10) {
+        int j = n1;  // tables from n1 to n2
+
+        while(j <= n2) {
+            printf("%d x %d = %-3d\t", j, i, j * i);
+            j++;
+        }
+
+        printf("\n");
+        i++;
+    }
+
+    return 0;
+}
+output:
+Enter starting number (n1): 2
+Enter ending number (n2): 6
+2 x 1 = 2  	3 x 1 = 3  	4 x 1 = 4  	5 x 1 = 5  	6 x 1 = 6  	
+2 x 2 = 4  	3 x 2 = 6  	4 x 2 = 8  	5 x 2 = 10 	6 x 2 = 12 	
+2 x 3 = 6  	3 x 3 = 9  	4 x 3 = 12 	5 x 3 = 15 	6 x 3 = 18 	
+2 x 4 = 8  	3 x 4 = 12 	4 x 4 = 16 	5 x 4 = 20 	6 x 4 = 24 	
+2 x 5 = 10 	3 x 5 = 15 	4 x 5 = 20 	5 x 5 = 25 	6 x 5 = 30 	
+2 x 6 = 12 	3 x 6 = 18 	4 x 6 = 24 	5 x 6 = 30 	6 x 6 = 36 	
+2 x 7 = 14 	3 x 7 = 21 	4 x 7 = 28 	5 x 7 = 35 	6 x 7 = 42 	
+2 x 8 = 16 	3 x 8 = 24 	4 x 8 = 32 	5 x 8 = 40 	6 x 8 = 48 	
+2 x 9 = 18 	3 x 9 = 27 	4 x 9 = 36 	5 x 9 = 45 	6 x 9 = 54 	
+2 x 10 =20 	3 x 10 =30 	4 x 10 =40 	5 x 10 =50 	6 x 10 =60 	
+
+
+=== Code Execution Successful ===
+
+
+
