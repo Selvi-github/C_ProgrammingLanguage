@@ -1,0 +1,31 @@
+continue is a keyword whenever it is executed it will skip current iteration it will move on to the next iteration continue can be implemented in
+only in the loops otherthan loops
+if you're  writing continue keyword will get an compilation error saying misplaced continue.
+
+Purpose of continue:
+whenever we want to skip some part of iteration and to move on to the next iteration we can go for continue keyword.
+
+eg:
+  write a program to print 1 to 3 and 8 to 10 
+  // Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a;
+      for(a=1;a<=10;a++){
+          if(a>3&&a<8){
+              continue;
+          }
+          printf("%d ",a);
+      }
+    return 0;
+}
+output:
+1 2 3 8 9 10 
+
+=== Code Execution Successful ===
+
+flow control:
+the order of execution of given statement in the program is known as flow control.
+
+  
