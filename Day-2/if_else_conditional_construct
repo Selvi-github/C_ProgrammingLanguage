@@ -1,0 +1,295 @@
+if(raining)
+{
+   take umbrella;
+  }
+else{
+won't take umbrella;
+}
+
+Syntax:
+if(condition)-------------------|
+{                  |  //true    | //false
+   if body; <------|            |
+}                               |
+else{                           |
+    else body ;<----------------|
+}
+
+1)else is a keyword and it is optional
+2)If your writing else keyword that should there immediatly after closing of if boy otherwise will get an error.
+
+eg:1
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+     printf("A");
+    if(3>2){
+        printf("B");
+         printf("C");
+    }
+    else{
+    printf("D");
+     printf("E");
+    }
+    printf("F");
+    return 0;
+}
+output:
+ABCF
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+     printf("A");
+    if(6)
+        printf("B");
+         printf("C"); 
+    else
+    printf("D"); 
+     printf("E");
+    printf("F");
+    return 0;
+}
+output:
+ERROR!
+/tmp/NcNcgva5Yl/main.c: In function 'main':
+/tmp/NcNcgva5Yl/main.c:9:5: error: 'else' without a previous 'if'
+    9 |     else
+      |     ^~~~
+
+
+=== Code Exited With Errors ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+     printf("A");
+    if(1)
+        printf("B");
+    else
+    printf("D");
+     printf("E");
+    printf("F");
+    return 0;
+}   
+output:
+ABEF
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    if(3>2);
+    else;
+    printf("hello");
+    return 0;
+}
+output:
+hello
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    if(20>200);      //if can be end with ; that refer if contains empty body
+    else;            //else can be end with ; that refers else body is empty
+    printf("hello");    
+    return 0;
+}
+output:
+hello
+
+=== Code Execution Successful ===
+
+Write aprogram to find the max of 2 integer using if else conditional construct
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a,b;
+    printf("Enter a number a,b :\n");
+    scanf("%d%d",&a,&b);
+    if(a>b){
+        printf("max is a %d",a);
+    }
+    else{
+        printf("max is b %d",b);
+    }
+    return 0;
+}
+output:
+Enter a number a,b :
+300
+200
+max is a 300
+
+=== Code Execution Successful ===
+
+Write a programvto find max of 3 variables
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a,b,c;
+    printf("Enter a number a,b.c :\n");
+    scanf("%d%d%d",&a,&b,&c);
+    if(a>b&&a>c){
+        printf("max is a %d",a);
+    }
+    else{
+        if(b>c)
+        printf("max is b %d",b);
+        else{
+            printf("max is c %d",c);
+        }
+    }
+    return 0;
+}
+output:
+Enter a number a,b.c :
+20
+40
+10
+max is b 40
+
+=== Code Execution Successful ===
+
+write a program to find max  of 4 variable
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a,b,c,d;
+    printf("Enter a number a,b.c,d :\n");
+    scanf("%d%d%d%d",&a,&b,&c,&d);
+    if(a>b&&a>c&&a>d){
+        printf("max is a %d",a);
+    }
+    else{
+        if(b>c&&b>d)
+        printf("max is b %d",b);
+        else{
+            if(c>d)
+            printf("max is c %d",c);
+            else{
+                printf("max is d %d",d);
+            }
+        }
+    }
+    return 0;
+}
+output:
+Enter a number a,b.c,d :
+30
+20
+50
+60
+max is d 60
+
+=== Code Execution Successful ===
+
+Write a program to check the given number is positive or negative 
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a;
+    printf("Enter a number a:\n");
+    scanf("%d",&a);
+    if(a>0){
+        printf("a is positive");
+    }
+    else{
+        printf("a is negative");
+    }
+    return 0;
+}
+output:
+Enter a number a:
+-10
+a is negative
+
+=== Code Execution Successful ===
+
+Day -2 
+Task -1
+To find the number is positive or negative without using relational operators:
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a;
+    printf("Enter a number a:\n");
+    scanf("%d",&a);
+    if(a>>15&1){
+        printf("a is negative");
+    }
+    else{
+        printf("a is positive");
+    }
+    return 0;
+}
+output:
+Enter a number a:
+-20
+a is negative
+
+=== Code Execution Successful ===
+
+Write a program to check the given number is odd or even 
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a;
+    printf("Enter a number a:\n");
+    scanf("%d",&a);
+    if(a%2==0){
+        printf("a is even");
+    }
+    else{
+        printf("a is odd");
+    }
+    return 0;
+}
+output;
+Enter a number a:
+31
+a is odd
+
+=== Code Execution Successful ===
+
+Write a program to check the given number is odd or even without using modulo operator %
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+   int a;
+    printf("Enter a number a:\n");
+    scanf("%d",&a);
+    if(a&1==1){
+        printf("a is odd");
+    }
+    else{
+        printf("a is even");
+    }
+    return 0;
+}
+output:
+Enter a number a:
+4
+a is even
+
+=== Code Execution Successful ===
+
+
+
