@@ -1,0 +1,46 @@
+break:
+break is a keyword when ever it is executed immediately control will comeout the of that respective loop.
+break can be implemented in all the loop and also in the switch.
+Apart from these 4 if you are writing break key word ,will get a compilation error saying as misplaced beark
+
+eg:
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+  while(a<=5){
+      if(a==2)
+          break;
+      printf("happy people ");
+       a++;
+    }
+    return 0;
+}
+output:
+happy people 
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+   int a=1;
+      if(a==2){
+          break;
+      printf("happy people ");
+     
+    }
+    return 0;
+}
+ERROR!
+/tmp/HrSLI9teYx/main.c: In function 'main':
+/tmp/HrSLI9teYx/main.c:7:11: error: break statement not within loop or switch
+    7 |           break;
+      |           ^~~~~
+
+
+=== Code Exited With Errors ===
+
+
