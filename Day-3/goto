@@ -1,0 +1,118 @@
+goto is a keyword which requires the label , goto statement should end with a ; label statement should end with :.
+
+eg;
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+      goto down;
+      printf("A");
+      printf("B");
+      down:
+      printf("C");
+    return 0;
+}
+output:
+C
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+       down:
+      printf("A");
+      printf("B");
+      goto down;
+      printf("C");
+    return 0;
+}
+output;
+ABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABABA....
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+      printf("A");
+      printf("B");
+      goto down;
+      printf("C");
+    return 0;
+}
+output;
+ERROR!
+/tmp/k4FNcCCq37/main.c: In function 'main':
+/tmp/k4FNcCCq37/main.c:7:7: error: label 'down' used but not defined
+    7 |       goto down;
+      |       ^~~~
+
+
+=== Code Exited With Errors ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+      printf("A");
+      printf("B");
+      down:
+      printf("C");
+    return 0;
+}
+output:
+ABC
+
+=== Code Execution Successful ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     goto 123;
+      printf("A");
+      printf("B");
+     123:
+      printf("C");
+    return 0;
+}
+output:
+ERROR!
+/tmp/4FKQJKUBiG/main.c: In function 'main':
+/tmp/4FKQJKUBiG/main.c:5:11: error: expected identifier or '*' before numeric constant
+    5 |      goto 123;
+      |           ^~~
+ERROR!
+/tmp/4FKQJKUBiG/main.c:8:9: error: expected ';' before ':' token
+    8 |      123:
+      |         ^
+      |         ;
+
+
+=== Code Exited With Errors ===
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+     goto down:
+      printf("A");
+      printf("B");
+      down:
+      printf("C");
+    return 0;
+}
+output:
+/tmp/CK1EKdyqjH/main.c: In function 'main':
+ERROR!
+/tmp/CK1EKdyqjH/main.c:5:15: error: expected ';' before ':' token
+    5 |      goto down:
+      |               ^
+      |               ;
+
+
+=== Code Exited With Errors ===
+
+if there is  way to print if body and else body use goto
