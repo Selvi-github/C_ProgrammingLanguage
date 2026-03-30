@@ -1,0 +1,49 @@
+Decimal:
+Range - 0,1,2,3,4,5,6,7,8,9
+Base - ()10 
+Format Specifier - %d, %i
+example: 143,420,327
+
+Octal:
+Range - 0,1,2,3,4,5,6,7
+Base - ()8
+Format Specifier - %o
+example: 023,072,0123,0824
+
+Hexadecimal:
+Range - 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F  
+Base - ()16
+Format Specifier - %x,%X
+example: 0Xface,0X23fe,0Xcafe
+
+Binary:
+Range - 0,1
+Base - ()2 
+Format Specifier - %b (in new version)
+example-0101, 001, 1110
+
+conversion:
+{binary ,octal ,hexadecimal } - decimal [multiple with power of 2,8,16]
+decimal to {binary , octal, hexadecimal} -LCM  with 2,8,16
+
+ex: (123)10 => (1111011)2
+(1111011)2 =>(123)10
+
+octal to binary :
+each octal digit into 3 binary bit
+
+binary to octal:
+grouping every 3 bits into one octal digit from right to left
+
+Hexadecimal to binary:
+ungroup each hexadecimal digit into 4 binary bits
+
+Binary to Hexadecimal:
+grouping every 4 binary bits into one hexadecimal from right to left
+
+we can't convert from octal to hexa decimal directly instead we convert to binary and then hexadecimal
+
+
+
+
+
