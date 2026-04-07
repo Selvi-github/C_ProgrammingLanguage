@@ -28,3 +28,17 @@ void main() {
     // O/P: hello  (0.125 has exact binary representation)
 }
 Why? 0.6 cannot be represented exactly in binary (infinite repeating), but 0.125 = 2⁻³ = 1/8 → exact.
+Decimal to Binary (Fractional Part)
+Convert 0.125 to binary:
+0.125 × 2 = 0.25  → 0
+0.25  × 2 = 0.5   → 0
+0.5   × 2 = 1.0   → 1
+0.0   × 2 = 0.0   → stop
+
+0.125 = .001 in binary
+     = 0×2⁻¹ + 0×2⁻² + 1×2⁻³
+     = 1 × 2⁻³ = 1/8 = 0.125 ✓
+
+IEEE 754 Floating Point
+float f = 3.18;
+f is stored/printed using IEEE 754 Standard Floating Point Representation (binary internal format).
