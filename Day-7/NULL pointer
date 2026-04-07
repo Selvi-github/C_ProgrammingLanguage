@@ -1,0 +1,12 @@
+Null pointer = a pointer that is pointing to zero address (address 0).
+
+cint *ip = NULL;      // NULL pointer
+*ip = 35;            // WRITE (NULL pointer dereference → WRITE error)
+
+If we are trying to update any data using null pointer → will get runtime error.
+If we perform any operation on null pointer → will get runtime error.
+Zero/null address is a special address that the compiler uses to do some special tasks.
+
+cint *ip;
+ip = (int *)0;    // null pointer
+*ip = 35;         // WRITE → RTE
