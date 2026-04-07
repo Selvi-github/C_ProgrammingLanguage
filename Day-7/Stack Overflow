@@ -1,0 +1,31 @@
+Example 1 — Static in main(), calling main()
+c#include <stdio.h>
+int main() {
+    static int s = 5;
+    printf("%d", s);
+    if(--s)
+        main();
+    printf("%d", s);
+    return 0;
+}
+O/P: 5 4 3 2 1 0 0 0 0 0 0
+Trace:
+s=5 → print 5 → s=4 (truthy) → main()
+s=4 → print 4 → s=3 → main()
+s=3 → print 3 → s=2 → main()
+s=2 → print 2 → s=1 → main()
+s=1 → print 1 → s=0 → (falsy, no recursion)
+→ unwind: print 0,0,0,0,0 (s is static=0 for all)
+
+Example 2 — Non-static in main(), calling main() → Stack Overflow
+cint main() {
+    int s = 5;
+    printf("%d", s);
+    if(--s)
+        main();
+    printf("%d", s);
+    return 0;
+}
+O/P: 5 will be printed until RTE (Runtime Error) — Stack Overflow
+
+Each main() call creates a new s=5 on stack → --s is always 4 (truthy) → infinite recursion → Stack Overflow.
