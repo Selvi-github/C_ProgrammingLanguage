@@ -1,0 +1,76 @@
+Return Type & Return Statement
+How return Works
+When a return statement is executed in a function:
+
+That function terminates immediately.
+Control returns to the function call place.
+The call is replaced with the returned value.
+
+Return Type
+
+In the function definition, before the function name, provide a data type — called the return type.
+If no value is to be returned → use void (means empty).
+
+cint test() {
+    int a = 5;
+    return a;    // returns 5
+}
+
+void main() {
+    int a;
+    a = test();
+    printf("%d", a);
+}
+// O/P: 5
+
+Return Statement Variations
+c1) return 5;        // returns 5
+2) return 3.10;     // returns 3 (if int return type, truncates)  // CE
+3) return 'a';      // returns 97
+4) return 10;
+   return 20;       // only first return executes → 10 (second: unreachable)
+5) return 10+20;    // returns 30  (warning: unreachable code)
+6) return;          // O/P: GIV (garbage value)
+7) return → GIV
+
+Key Rule: When a function returns a value, collecting that value into a variable is always optional.
+
+
+Nested Function Calls
+When there are nested function calls, the order of execution is from inner to outer.
+cint dept(int a) {
+    return ++a;
+}
+
+int main() {
+    int a = 15;
+    dept(dept(dept(++a)));
+    printf("%d", a);
+    return 0;
+}
+// a = dept(dept(dept(16)))
+// O/P: 19
+
+printf() Return Value
+printf() returns the number of characters printed (including spaces, symbols).
+cif(printf("%."; sq))    // ASCII value of ';' is 59
+if(!printf("Happy"))    // ! of non-zero = 0 → else branch
+    printf("Happy");
+else
+    printf("People");
+// O/P: HappyPeople
+
+Void Function with Return
+cvoid test() {
+    return 5;   // CE: void function can't return value
+}
+
+void test() {
+    return 5;
+}
+void main() {
+    int a;
+    test();         // not assigning → CE (undefined behavior)
+    printf("%d", a);
+}
+// O/P: GIV
