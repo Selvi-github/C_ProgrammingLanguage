@@ -1,0 +1,30 @@
+Float & Double
+Key Concept
+
+By default, all decimal point numbers are treated as double. To treat as float, append f.
+Example: 0.6f
+
+Float vs Double
+PropertyfloatdoubleSize4 Bytes8 BytesPrecisionSingle (6-7 dig.)Double (15-16 d.)IEEE 75432-bit64-bit
+
+Floating-Point Comparison Issue
+cvoid main() {
+    float f;
+    f = 0.6;
+    if(f == 0.6)
+        printf("hello");
+    else
+        printf("Hai");
+    // O/P: Hai   (because 0.6 is double, f is float → precision mismatch)
+}
+
+void main() {
+    float f;
+    f = 0.125;
+    if(f == 0.125)
+        printf("hello");
+    else
+        printf("Hai");
+    // O/P: hello  (0.125 has exact binary representation)
+}
+Why? 0.6 cannot be represented exactly in binary (infinite repeating), but 0.125 = 2⁻³ = 1/8 → exact.
