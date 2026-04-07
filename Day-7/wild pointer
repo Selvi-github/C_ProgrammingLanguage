@@ -1,0 +1,9 @@
+Wild Pointer
+
+Wild pointer = a pointer that is not initialized by the programmer. It points to some random/unknown memory location.
+
+cint *ip;       // wild pointer — ip has garbage address
+*ip = 569;     // DANGEROUS — writing to unknown memory
+Hence: An uninitialized pointer is always recommended to initialize with addresses but not with a value directly.
+
+If we receive a room from the hotel — that room is already occupied by someone else. We are trying to update it → dangerous.
