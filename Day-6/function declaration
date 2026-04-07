@@ -1,0 +1,56 @@
+Function Declaration (Prototype)
+What is Function Declaration?
+Calling a function that is defined later in the code requires compulsory function declaration.
+Function declaration specifies:
+
+Name of the function
+Number of arguments
+Type of arguments
+Order of arguments
+Return type
+
+
+The first line of the function definition is called the function declarator. Function Declarator and Function Declaration should match.
+
+
+Structure
+void test(5, 4);           → function declaration (wrong: values in declaration)
+void test(int a, float b); → function declarator  ✓
+{ ... }                    → function definition
+test();                    → function call
+
+Example — Without Declaration (CE)
+cvoid main() {
+    test();       // CE: test() defined after
+}
+void test() {
+    printf("Happy");
+}
+
+Example — With Declaration (Works)
+cvoid main() {
+    void test();  // function declaration
+    test();
+}
+void test() {
+    printf("Happy");
+}
+// O/P: Happy
+
+Example — With Parameters
+cvoid main() {
+    test(4, 5.1);
+}
+void test(int a, float f) {
+    printf("%d %f", a, f);
+}
+// CE (no declaration) — need to add: void test(int, float); before call
+Correct version:
+cvoid main() {
+    void test(int a, float b);   // declaration
+    void test(4, 5.1);
+}
+void test(int a, float f) {
+    printf("%d %f", a, f);
+}
+// O/P: 4 5.1
