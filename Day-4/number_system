@@ -43,6 +43,84 @@ grouping every 4 binary bits into one hexadecimal from right to left
 
 we can't convert from octal to hexa decimal directly instead we convert to binary and then hexadecimal
 
+Binary → Octal
+
+Group every 3 bits into one octal digit, from Right to Left.
+
+(110101010)₂
+ ↓   ↓   ↓
+ 1   5   2   →  (152)₈ (wait: shown in notes as 159 with grouping 1|5|9)
+Example from notes:
+(110101010)₂
+ ↓   ↓   ↓
+ 1   5   9   →  (159)₈  (approx — note grouping R to L)
+
+Hexadecimal → Binary
+
+Ungroup each hex digit into 4 binary bits.
+
+(6x32)₁₆  i.e., 6, 3, 2
+  ↓   ↓
+8010  0011   →  binary equivalent
+
+Binary → Hexadecimal
+
+Group every 4 binary bits into one hex digit, from Right to Left.
+
+Example:
+(1011 0110 1010)₂
+  ↓    ↓    ↓
+  B    6    A    →  (B6A)₁₆
+
+⚠️ Not Possible Directly
+Octal ←→ Hexadecimal  (Direct conversion NOT possible)
+Must convert through Binary as intermediate:
+Octal → Binary → Hexadecimal
+Hexadecimal → Binary → Octal
+
+2. Format Specifiers
+SpecifierMeaning%dInteger (signed)%iInteger%cCharacter%oOctal%xHexadecimal (lower)%XHexadecimal (upper)%fFloat (IEEE 754)
+Key Points
+
+Except floating-point values, all remaining data is internally stored in binary representation.
+Format specifiers like %d, %i, %c, %o, %x, %X are designed to print/format binary data in respective formats.
+
+e.g., %o takes binary data as input and formats it into octal format.
+
+
+Format specifiers are meant for formatting data from one form to another — not for converting.
+
+Floating-Point Note
+
+All floating values are internally stored in a special representation called IEEE 754 (Standard Floating Point Representation). %f is designed to print these data.
+
+
+Example — Multiple Format Specifiers
+cvoid main() {
+    printf("%d %i %c %o %x %X", 135, 135, 135, 135, 135);
+}
+Output:
+135   135   207   87   87
+FormatValueExplanation%d135Decimal%i135Decimal%o207Octal of 135%x87Hex of 135%X87Hex uppercase
+135 in binary:
+2 | 135
+2 | 67  – 1
+2 | 33  – 1
+2 | 16  – 1
+2 | 8   – 0
+2 | 4   – 0
+2 | 2   – 0
+2 | 1   – 0
+    0   – 1
+→ (10000111)₂
+135 in octal (207):
+135 ÷ 8 = 16 R 7 → 16 ÷ 8 = 2 R 0 → 2 ÷ 8 = 0 R 2 → (207)₈
+
+Example — Octal Output with %o
+cvoid main() {
+    printf("%4 %d %i %o %x %X", 135, 0135, 0135, 0135, 0135);
+}
+Output: 0135, 0135, 0135, 0135, 0135 → (207)₈
 
 
 
