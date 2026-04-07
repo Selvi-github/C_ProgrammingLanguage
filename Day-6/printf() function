@@ -1,0 +1,21 @@
+printf() as a Function — Special Cases
+c// Case 1: printf in if condition
+if(printf("%.")) {     // prints "." and returns 1 (truthy)
+    ...
+}
+// O/P: ;  (the semicolon ';' is ASCII 59 — not zero → truthy)
+c// Nested printf in while
+while(printf("Hai"))   // infinite loop (printf returns non-zero)
+    ;
+// O/P: Hai Hai Hai ... (infinite)
+
+while(!printf("Hai"))  // !non-zero = 0 → loop never runs
+    ;
+// O/P: Hai (once, from condition)
+
+while(printf("Hai") < 0)  // 3 > 0, so never enters → O/P: Hai
+    ;
+
+switch(printf("Hai"))  // switch on 3 (3 chars) → 3 is not in case
+    ;
+// O/P: Hai
