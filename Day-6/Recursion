@@ -1,0 +1,86 @@
+Recursion
+What is Recursion?
+A function that calls itself is called a recursive function. The process is called recursion.
+
+Factorial Example
+cint fun(int n) {
+    int a;
+    if(n <= 0) return 1;
+    a = n * fun(n-1);
+    return a;
+}
+
+void main() {
+    int a;
+    a = fun(4);
+    printf("%d", a);
+}
+// O/P: 24
+Recursion trace for fun(4):
+fun(4)
+  └─→ 4 * fun(3)
+          └─→ 3 * fun(2)
+                  └─→ 2 * fun(1)
+                          └─→ 1 * fun(0) = 1
+                      = 2 * 1 = 2
+              = 3 * 2 = 6
+      = 4 * 6 = 24
+
+Factorial Alternative
+cint fun(int n) {
+    if(n <= 0) return 1;
+    return n / fun(n-1);  // Note: int division
+}
+
+void main() {
+    printf("%d", fun(4));
+}
+// 4/1 = 3/2 = 2/1 = 1/1 = 4 (approx)
+
+Recursive with Printing
+cvoid test(int L) {
+    printf("%d", L);
+    if(L == 2)
+        test(L+1);
+    printf("%d", L);
+}
+
+void main() {
+    test(1);
+}
+// O/P: 1  2  3  2  1  (prints going in and coming back)
+
+Key Rules for Recursion
+
+Every recursive function must have a base case (termination condition) — if(n <= 0) return 1;
+Without base case → infinite recursion → stack overflow.
+Order of execution in nested calls: inner to outer.
+
+
+📌 Quick Reference
+IEEE 754 Layouts
+float  (32-bit): [1 sign][8 exponent][23 mantissa]
+double (64-bit): [1 sign][11 exponent][52 mantissa]
+Function Anatomy
+creturn_type function_name(parameter_list);   // declaration
+return_type function_name(parameter_list) {  // definition
+    // body
+    return value;
+}
+function_name(arguments);                    // call
+Storage Class Quick Reference
+auto    → local, GIV, destroyed after function ends
+static  → local scope, retains value across calls, default 0
+extern  → global, default 0, accessible everywhere
+register→ local, GIV, stored in CPU register (fast)
+Recursion Template
+creturn_type func(params) {
+    if(base_condition)       // base case
+        return base_value;
+    // recursive case
+    return func(modified_params);
+}
+printf() Return Value
+printf("Hello")  → returns 5 (number of chars printed)
+printf("")       → returns 0 (falsy)
+!printf("Hi")    → !2 = 0
