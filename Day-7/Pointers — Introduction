@@ -1,0 +1,18 @@
+Key Definitions
+
+A variable which stores the address of another variable is known as a pointer variable (or pointer).
+
+
+a is a variable of int type → int type variables store integer data.
+ip is a variable of int* type → int* type variables store integer addresses.
+
+cint a;
+a = 5;
+int *ip;       // ip is a pointer to int
+ip = &a;       // ip stores address of a
+printf("%d", a);   // 5  (value)
+printf("%d", &a);  // 500 (address — some value like 500)
+printf("%d", ip);  // 500 (same address stored in ip)
+printf("%d", *ip); // 5   (value at address ip points to)
+
+For any variable, however many bytes are allocated — if we print the address, only the starting one byte address is printed.
