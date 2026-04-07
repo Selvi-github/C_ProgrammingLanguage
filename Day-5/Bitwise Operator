@@ -172,3 +172,37 @@ return data;
 
 // Full approach:
 ((n << 1) & (0xAAAA)) | ((n >> 1) & (0x5555))
+Operator Priority Table
+Highest Priority →
+sizeof()  +  ~  !  --  -  (typeof)x
+|  *  %
++  -
+<<  >>
+<  >  <=  >=
+==  !=
+&
+^
+|
+&&
+||
+?:
+=
+← Lowest Priority
+
+📌 Quick Reference
+Signed Char Overflow Chain
+127 → 128 (overflow → -128) → 129 (→ -127) → 130 (→ -126) ...
+-127 → -128 → -129 (overflow → 127)
+~x Formula
+~x = -(x+1)
+Left Shift Formula
+a << b  =  a × 2^b
+Right Shift Formula
+a >> b  =  a / 2^b   (for positive a)
+Power of 2 Check
+c(n > 0) && (n & (n-1)) == 0
+Bit Operations
+cCheck  : (data & (1 << bit)) != 0
+Turn ON: data |= (1 << bit)
+Turn OFF: data &= ~(1 << bit)
+Toggle : data ^= (1 << bit)
