@@ -1,0 +1,174 @@
+Bitwise operators work at the bit level on integer types.
+#OperatorSymbolName1~~1's Complement2&&AND3||OR4^^XOR5<<<<Left Shift6>>>>Right Shift
+
+9.1 Bitwise 1's Complement (~)
+Inverts all bits.
+Formula: ~x = -(x + 1)
+~5  = -6
+~8  = -9
+~9  = -10
+~143 = -144
+~420 = -421
+~(-480) = 479
+Example:
+cvoid main() {
+    int a;
+    a = ~0;
+    printf("%d", a);    // -1
+}
+16-bit working:
+0  : 0000 0000 0000 0000
+~0 : 1111 1111 1111 1111  → all 1s = -1
+5's complement:
+5  : 0000 0000 0000 0101
+~5 : 1111 1111 1111 1010  → = -6
+8's complement:
+8  : 0000 0000 0000 1000
+~8 : 1111 1111 1111 0111  → = -9
+
+9.2 Bitwise Left Shift (<<)
+Shifts bits to the left; gaps filled with 0s.
+Formula: a << b = a * 2^b
+5  << 1 = 10     (5 * 2¹ = 10)
+8  << 2 = 32     (8 * 2² = 32)
+-7 << 1 = -14
+11 << 2 = 44
+-14 << 2 = -56
+Example working (5 << 1):
+5  : 0000 0000 0000 0101
+<<1: 0000 0000 0000 1010  →  10
+Example working (5 << 2):
+5  : 0000 0000 0000 0101
+<<2: 0000 0000 0001 0100  →  note: (10)
+     ↑ Gap filled with 0
+(-7 << 1):
+-7 : 1111 1111 1111 1001
+<<1: 1111 1111 1111 0010  →  -14
+
+9.3 Bitwise Right Shift (>>)
+Shifts bits to the right.
+
+Note: Gaps fill with MSB (sign bit for signed numbers).
+
+Formula:
+
+Positive: a >> b = a / 2^b
+Negative: a >> b = ~(~a / 2^b)  (approx)
+
+5  >> 1 = 2
+15 >> 2 = 3
+-8 >> 1 = -4
+-16 >> 2 = -4
+5 >> 1:
+5  : 0000 0000 0000 0101
+>>1: 0000 0000 0000 0010  →  2
+15 >> 2:
+15 : 0000 0000 0000 1111
+>>2: 0000 0000 0000 0011  →  3
+-8 >> 1:
+-8 : 1111 1111 1111 1000
+>>1: 1111 1111 1111 1100  →  -4  (MSB filled)
+-16 >> 2:
+-16: 1111 1111 1111 0000
+>>2: 1111 1111 1111 1100  →  -4
+
+9.4 Truth Tables
+b1b2b1 & b2b1 | b2b1 ^ b200010010111001111100
+Quick Rules:
+1 & x = x      0 & x = 0
+1 | x = 1      0 | x = x
+1 ^ x = ~x     0 ^ x = x
+
+9.5 Practical Bitwise Programs
+Program 1 — Check Status of a Given Bit
+cvoid main() {
+    int data, bit;
+    printf("Enter data and bit: ");
+    scanf("%d %d", &data, &bit);
+    if((data & (1 << bit)) == 0)
+        printf("OFF");
+    else
+        printf("ON");
+}
+Example: data=5, bit=3
+5    : 0000 0000 0000 0101
+1<<3 : 0000 0000 0000 1000
+AND  : 0000 0000 0000 0000  → OFF
+
+Program 2 — Turn ON a Given Bit (without disturbing others)
+cvoid main() {
+    int data, bit;
+    scanf("%d %d", &data, &bit);
+    data = data | (1 << bit);
+    printf("%d", data);
+}
+// data |= (1 << bit)
+
+Program 3 — Turn OFF a Given Bit (without disturbing others)
+cvoid main() {
+    int data, bit;
+    printf("Enter...");
+    scanf("%d %d", &data, &bit);
+    data = data & ~(1 << bit);
+    // data & (32767 - bit)   equivalent
+}
+
+Program 4 — Toggle a Given Bit (without disturbing others)
+cdata = data ^ (1 << bit);
+
+Program 5 — Check if Number is Power of 2
+cbool isPowerOfTwo(int n) {
+    if(n & (n-1) == 0)
+        return true;
+    else
+        return false;
+}
+
+// Better version:
+if(n > 0 && (n & (n-1)) == 0)
+    return true;
+Powers of 2:
+2⁰ = 1    → 0001
+2¹ = 2    → 0010
+2² = 4    → 0100
+2³ = 8    → 1000
+2⁴ = 16   → 10000
+
+Program 6 — Count Number of 1 Bits (Hamming Weight)
+cint hammingWeight(int n) {
+    int onebit = 0;
+    for(int bit = 0; bit < 32; bit++) {
+        if((n & (1 << bit)) != 0)
+            ++onebit;
+    }
+    return onebit;
+}
+
+bool isPowerOf3(int n) {
+    int onebit = 0;
+    if(n < 0) return false;
+    for(int bit = 0; bit < 32; bit++) {
+        if((n & (1 << bit)) != 0)
+            ++onebit;
+    }
+    return (onebit == 1);
+}
+
+Program 7 — Bytes Swapping
+Swap left byte to right byte and vice versa in given data 0xB774.
+cvoid main() {
+    int data;
+    int data1, data2;
+    data1 = data >> 8;    // 11111111 → 00000000  (right byte)
+    data2 = data << 8;    // 0111 0100 0000 0000   (left byte)
+    data = (data2) | (data1) & (0x00ff);
+    // mask with 0x00ff to keep only lower byte of data1
+}
+
+Program 8 — Swap Even and Odd Bit Positions
+cint data;
+data = data ^ 1;   // swap last two bits (simplified)
+return data;
+
+// Full approach:
+((n << 1) & (0xAAAA)) | ((n >> 1) & (0x5555))
