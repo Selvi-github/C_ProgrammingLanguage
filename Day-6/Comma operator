@@ -1,0 +1,12 @@
+Comma Operator in Function Arguments
+cint main() {
+    int a = 5, b = 10, c;
+    c = (a+b, a++, a+2);    // comma evaluates L to R, replaces with last
+    b = (b+b, b++, c*2);
+    printf("%d %d %d", a, b, c);
+}
+// c = 15, 5, 7 → c=8
+// b = 20, 10, 16 → b=16 (but b++ makes b=11 then c*2=16)
+// Output: 7, 5, 6  (varies by compiler)
+
+Comma operator evaluates all arguments left to right, replaces with the last argument's value.
