@@ -1,0 +1,143 @@
+Array & Pointers
+Array Name = Hidden Pointer
+
+Every array needs one hidden pointer. The array name it should always point to the first element.
+
+cint a[5];   // 'a' is a hidden pointer to a[0] (i.e., &a[0])
+a     → &a[0] → 500
+a+1   → &a[1] → 502
+a+2   → &a[2] → 504
+*(a)  → a[0]  (value)
+*(a+1)→ a[1]
+*(a+i)→ a[i]    ← general formula
+Array Element Access — Equivalence
+a[i]  ==  *(a+i)      both are same ✓
+i[a]  ==  *(i+a)      both are same ✓ (unusual but valid!)
+Justification: a[i] → pointer expression → converted into equivalent: *(a+i)
+
+Array name is always a constant — cannot change it. It is a constant pointer expression, not a variable.
+
+Applied with pointer expression:
+* pointer expression except when it is applied with sizeof and address operators.
+If we want to apply these operations we need to first dereference to a specific type.
+
+Accessing Array Elements
+cvoid main() {
+    int *p;
+    int a[3] = {34, 14, 84, 34};    // size 3 but 4 values → CE
+}
+c// Ex 1: Array with pointer
+void main() {
+    int *p;
+    int a[3] = {34, 14, 84};    // a[0]=34, a[1]=14, a[2]=84
+    p = &a[0];                   // or: p = a;
+
+    // Accessing:
+    // p[0] == *(p+0) == a[0] == 34
+    // p[1] == *(p+1) == a[1] == 14
+    // p[2] == *(p+2) == a[2] == 84
+}
+
+Array Traversal with Pointer
+c// Ex 2
+void main() {
+    int a[5] = {10, 80, 30, 40, 50};
+    int *p;
+    p = &a[0];    // p = a;
+
+    ++*p;         // a[0] becomes 11
+    ++p;          // p moves to a[1]
+    printf("%d %d %d %d\n", *p[-1], p[0], p[1], *p+1);
+    // Output: 11  80  30  81
+}
+
+Array with Traversal
+c// Ex 3:
+void main() {
+    int a[5] = {10, 80, 30, 40, 50};
+    int *p;
+    p = &a[0];
+
+    ++*p;      // a[0] = 11
+    ++p;       // p → a[1]
+    printf("%d %d\n", p[0], *p);     // 80  80
+}
+
+Array Element Access Equivalence
+cint a[5];
+int *p = a;
+
+// All equivalent ways to access element i:
+a[i]     == *(a+i)    // standard
+p[i]     == *(p+i)    // via pointer
+i[a]     == *(i+a)    // unusual but valid in C
+*(a+i)   == a[i]
+a[j]  ↔  *(a+j)  ↔  j[a]  ↔  *(j+a)   // all same → VALID
+
+19. Array of Pointers
+cint a[3];         // array of 3 integers
+int *p[3];        // array of 3 integer pointers
+int **pp[3];      // array of 3 pointers to integer pointers
+Example
+cint a, b, c;
+int *p1, *p2, *p3;
+
+a = 5; b = 2; c = 3;
+p1 = &a; p2 = &b; p3 = &c;
+
+// Array of pointers:
+int *p[3];
+p[0] = &a;     // p[0] → a
+p[1] = &b;     // p[1] → b
+p[2] = &c;     // p[2] → c
+
+// Accessing:
+*p[0] → 5
+*p[1] → 2
+*p[2] → 3
+
+// Swapping via array of pointers:
+int *p1 = &a;
+p1 = &a+1;      // p1 = a+1 = ptr arithmetic
+p3 = &a+2;
+
+int a[3] = {10, 20, 30};
+int *p1 = a;           // p1 = &a[0]
+int *p2 = &a[1];       // p2 = &a[1]
+int *p3 = &a[2];       // p3 = &a[2]
+
+p[0] = a+1;    // p[0] points to a[1]
+p[1] = a;      // p[1] points to a[0]
+p[2] = a+2;    // p[2] points to a[2]
+
+// Then:
+// p[0][0] == *(p[0]+0) == a[1] == 20
+// p[1][0] == a[0] == 10
+// p[2][0] == a[2] == 30
+
+📌 Quick Reference
+Pointer Declarations
+cint   *p;       // pointer to int
+char  *cp;      // pointer to char
+float *fp;      // pointer to float
+void  *vp;      // generic pointer (void)
+int  **pp;      // pointer to pointer to int
+int ***ppp;     // pointer to pointer to pointer to int
+int  *arr[3];   // array of 3 int pointers
+Pointer Operations
+c&var      // address of var
+*ptr      // value at ptr (dereference)
+ptr++     // move to next element (address += sizeof(type))
+ptr--     // move to previous element
+ptr + n   // address of nth element ahead
+*(ptr+n)  // value of nth element 
+Array-Pointer Equivalence
+ca[i]  ==  *(a+i)  ==  i[a]  ==  *(i+a)
+Call by Value vs Address
+Call by Value:   swap(a, b)    → copies, original unchanged
+Call by Address: swap(&a, &b)  → pointers, original changed
+Pointer Types
+Type                              Description
+Wild PointerUninitialized →     random addressNull PointerPoints to address 0 (NULL)
+Dangling Pointer                 Points to freed/out-of-scope memory
+Void PointerGeneric —          can hold any address type
