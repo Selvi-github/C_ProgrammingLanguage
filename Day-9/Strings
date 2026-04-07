@@ -1,0 +1,201 @@
+Strings
+String Declaration
+A string is an array of characters ending with null character '\0'
+// Method 1: String literal
+char str[] = "Hello";
+// stored as: H e l l o \0
+
+// Method 2: Character array
+char str[] = {'H','e','l','l','o','\0'};
+
+// Method 3: Pointer (not safely mutable)
+char *str = "Hello";
+Common String Functions
+Function	Description
+strlen(str)	Length (excluding '\0')
+strcpy(a,b)	Copy b into a
+strcat(a,b)	Concatenate b to a (stored in a)
+strcmp(a,b)	Compare: 0 if equal, +ve if a>b, -ve if a<b
+sizeof vs strlen
+char str1[] = "zohoInterview";
+int n1 = sizeof(str1)/sizeof(str1[0]);
+// n1 = 14 (13 chars + '\0')
+
+char str2[] = {'t','e','s','t','\0'};
+int n2 = sizeof(str2)/sizeof(str2[0]);
+// n2 = 9 (explicit chars)
+
+printf("n1=%d n2=%d", n1, n2);
+output
+n1=14, n2=9
+String Pointer Arithmetic
+char str[] = "Aptitude";
+
+// &str[5] → pointer from index 5
+// str+5   → same, pointer arithmetic
+// str[5]  → 't' (the character)
+
+printf("%s %s\n", &str[5], str+5);
+// "ude ude"
+
+printf("%c %c\n", *(str+6), str[5]);
+// 'd', 't'
+output
+ude ude d t
+Palindrome Check (Number)
+bool palindrome(int a) {
+  int x = a, rev = 0;
+  while (a >= 0) {
+    rev = rev * 10 + (a % 10);
+    a /= 10;
+  }
+  if (rev == x) return true;
+  else return false;
+}
+Palindromic Array Check
+int main() {
+  int arr[10];
+  for (int i=0; i<n; i++) {
+    isPalindrome = true;
+    temp = arr[i];
+    if (isPalindrome)
+      arr[i] = 1;
+    else
+      arr[i] = 0;
+  }
+}
+
+bool isPalindrome(int n) {
+  if (n == 0) return (0x)
+  return (isPalindrome ? "true" : "false");
+}
+07
+Structures
+What is a Structure?
+A structure is a collection of variables of different data types under one name.
+struct student {
+  int id;
+  float marks;
+};
+sizeof(struct) = sum of member sizes + padding
+In the example: int=4 bytes (0–3), padding (2–3), float=4 bytes (4–7) → 8 bytes total
+Structure Example
+#include <stdio.h>
+struct student {
+  int id;
+  float marks;
+};
+int main() {
+  struct student s1;
+  s1.id = 101;
+  s1.marks = 95.5;
+  printf("%d %.2f", s1.id, s1.marks);
+  return 0;
+}
+output
+101 95.5
+Self-referential Structure
+struct st {
+  int x;
+  struct st *next;  // pointer OK
+  // struct st next;  ERROR!
+  // Can't contain object of its own
+  // type (infinite size problem)
+};
+int main() {
+  struct st temp;
+  temp.x = 10;
+  temp.next = &temp;
+  printf("%d", temp.next->x);
+  return 0;
+}
+output
+Compilation Error (direct) / OK (pointer)
+08
+Unions
+What is a Union?
+A union is a data type where all members share the same memory location.
+union data {
+  int i;
+  float f;
+  char c;
+};
+Size of union = size of largest member
+Structure vs Union Comparison
+Feature	Structure	Union
+Memory	Separate memory for each member	Shared memory location
+Size	Sum of all members + padding	Size of largest member
+Usage	All members accessible at once	Only one member at a time
+Efficiency	More memory usage	Memory saving
+Union sizeof Example
+union test {
+  int x;
+  char arr[8];
+  int y;
+};
+int main() {
+  printf("%d", sizeof(union test));
+  return 0;
+}
+output
+8 (largest member = char arr[8])
+09
+Pointers & Strings (Advanced)
+Pointer to String (char**)
+char *c[] = {"GeeksQuiz", "MCQ", "TEST", "QUIZ"};
+char **cp = c;
+int main() {
+  printf("%s\n", *++cp);       // MCQ
+  printf("%s\n", *--cp+3);      // sQuiz
+  printf("%s\n", *cp[-2]+3);    // test
+  printf("%s\n", cp[-1][-1]+1); // 9
+  return 0;
+}
+output
+TEST sQUIZ 9
+Macro with Expression
+#define SQR(x) (x*x)
+int main() {
+  int a, b = 3;
+  a = SQR(b+2);
+  // expands to: (b+2 * b+2)
+  // = 3+2*3+2 = 3+6+2 = 11
+  printf("%d", a);
+}
+output
+11
+Macros do text substitution — not evaluation! Use parentheses: #define SQR(x) ((x)*(x))
+10
+Miscellaneous Programs
+Count Digits in Number
+for (int i = 0; i < n; i++) {
+  int count = 0;
+  while (m != 0) {
+    count++;
+    rem = a[i] / 10;
+  }
+  if (count >= 3)
+    digits++;
+}
+return digits;
+Count pairs with abs difference
+int count = 0;
+for (int i = 0; i < nums; i++)
+  if (a[i] > 99 || a[i] < -99)
+    count++;
+return count;
+Array input & print with %s
+#include <stdio.h>
+void f(char **p) {
+  char *t;
+  t = (p + sizeof(int))[2];
+  printf("%s\n", t);
+}
+int main() {
+  char *args[] = {"ab","cd","ef","gh",
+                  "ij", "k"};
+  f(args);
+  return 0;
+}
+output
+gh
