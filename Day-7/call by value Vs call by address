@@ -1,0 +1,176 @@
+Pointer Arithmetic & Swapping
+Pointer Arithmetic Rules
+c// ppptr || 700 || int***
+// *ppptr  = 600 → int**
+// **ppptr = 500 → int*
+// ***ppptr = 5  → int
+
+// *ppptr  ||  pptr  → both same address
+// **ppptr ||  ptr   → both same address
+Swapping via Pointers
+Swap 1 — a=b:
+cint a, b;
+a = b;    // a gets value of b (loses original a)
+Swap 2 — temp method:
+cint a = 5, b = 9;
+int x;
+x = a;    // x=5
+a = b;    // a=9
+b = x;    // b=5
+// Result: a=9, b=5  ✓
+Swap 3 — XOR method (no temp):
+cint a = 5, b = 9;
+a = a ^ b;    // a = 12
+b = a ^ b;    // b = 5
+a = a ^ b;    // a = 9
+Swap 4 — arithmetic (a+b):
+ca = a + b;   // a=14
+b = a - b;   // b=5
+a = a - b;   // a=9
+
+15. Call by Value vs Call by Address
+Call by Value
+
+Passes a copy of the value to the function.
+Changes inside function do not affect original variables.
+
+cvoid swap(int x, int y) {
+    int t = x;
+    x = y;
+    y = t;
+}
+
+void main() {
+    int a = 5, b = 2;
+    swap(a, b);
+    printf("%d %d", a, b);  // 5  2  (unchanged)
+}
+Memory:
+swap:  x[5]  y[2]  t[5] → x=2, y=5 (local copies only)
+main:  a[5]  b[2]        → unchanged
+Examples of call by value:
+ca = 4;
+printf("%d", sqrt(a));   // 2 (sqrt gets copy)
+printf("%d", a);         // 4 (original unchanged)
+
+b = -5;
+printf("%d", abs(b));    // 5
+printf("%d", b);         // -5
+
+Call by Address
+
+Passes the address of variables.
+Changes inside function directly affect original variables.
+scanf() uses call by address.
+
+cvoid swap(int *p1, int *p2) {
+    int t = *p1;
+    *p1 = *p2;
+    *p2 = t;
+}
+
+void main() {
+    int a = 5, b = 2;
+    swap(&a, &b);
+    printf("%d %d", a, b);  // 2  5  (swapped!)
+}
+Memory:
+main: a[5]@500  b[2]@600
+swap: p1=500, p2=600
+      t = *p1 = 5
+      *p1 = *p2 → a becomes 2
+      *p2 = t   → b becomes 5
+
+16. Arrays
+Why Arrays?
+Problem with individual variables:
+cint id1, id2, id3, ... id10;   // pain to write all names
+// Also: random memory allocation (not contiguous)
+Solution — Arrays:
+
+Same type variables → use arrays
+Same job variables → use arrays
+
+Definition
+
+Array = indexed collection of homogeneous elements stored in continuously allocated (contiguous) memory.
+
+cint a[5];   // a is an array of 5 integer elements
+            // OR: integer array of size 5
+Uses [] — Index/Subscript/Binary Operator
+cint a, b, c, d, e;
+// ↓ equivalent to:
+int a[5];   // a[0], a[1], a[2], a[3], a[4]
+Memory layout:
+a[0] a[1] a[2] a[3] a[4]
+500  502  504  506  508    (addresses, 2 bytes each for int)
+
+Valid & Invalid Array Definitions
+c// Valid:
+1) int a[5];
+2) int a[5];    // (same)
+3) Array name need → Valid
+
+// Invalid:
+int a[6];         // CE if access beyond 5 elements
+char c[3000];     // Valid (just memory)
+int a[0];         // Invalid — CE (zero size)
+int a[2.5];       // Invalid — CE (float size)
+float f[5000];    // Valid (Turbo C limit ~65535 addresses)
+int int x = 10;   // CE
+int a[x];         // in C language — variable as size is NOT allowed
+                  // (in old compilers; new compilers may allow)
+
+Array Size Rules
+
+Array — when we need n variables of same type, doing the same job → use array.
+Same scenario — when we need to go for arrays.
+Arrays are indexed collection of homogeneous elements, stored at a fixed location in contiguous memory.
+
+
+In Turbo C, there is an availability of 65535 continuous addresses. Where as in new compilers, there is no information of how many continuous addresses — it must be a constant expression (old compilers).
+
+
+In old C language, there is no checking of boundary. In new C language variables are also allowed (VLA — Variable Length Arrays in C99+).
+
+
+17. Array Initialization
+Examples
+c// 0: int a[5];          → CE (no element — treated as declaration only)
+// Actually invalid without size or initializer
+
+// 1: int a[5];
+//    a = {10,-3,33,-9,14};   // invalid: can't assign array after declaration
+
+// 2: int a[] = {10,-3,33,-9,14};   // valid (size inferred = 5)
+
+// 3: int a[5] = {3,10,20,30,40};   // valid
+
+// 4: char c[5];    // valid
+
+// 5: int x=10, y=20, z=30;
+//    int arr[3] = {x, y, z};   // CE in old compilers (not an error in modern C99+)
+//    valid
+Partial Initialization
+cint a[5] = {10, -3};
+// a[0]=10, a[1]=-3, a[2]=0, a[3]=0, a[4]=0
+// Remaining elements filled with 0
+c// 9: int a[5] = {3,10,20,30,40};
+// a[0]=3, a[1]=10, a[2]=20, a[3]=30, a[4]=40
+// valid
+
+// 4: int a[5] = {3,20,-3,33,-9,14,0};
+// size mismatch: 7 elements for size 5 → CE
+When array is initialized with some values:
+
+Elements mentioned → those values
+Remaining elements → filled with zero
+
+
+Array Initialization Rules Summary
+CaseCodeValid?Mention sizeint a[5];Valid (uninitialized, GIV)Size + valuesint a[5] = {1,2,3,4,5};ValidNo size, valuesint a[] = {1,2,3};Valid (size=3)Partial initint a[5] = {1,2};Valid (rest=0)More values than sizeint a[3] = {1,2,3,4};CEVariable size (old C)int n=5; int a[n];CE in Turbo C, OK in C99+Size = 0int a[0];CE
+
+When Array is Initialized Partially
+c// When an array is initialized partially, remaining elements are filled with zero.
+// In C language, there is no checking of boundary (accessing out-of-bounds → UB).
+// When an array's elements are initialized → remaining filled wit
