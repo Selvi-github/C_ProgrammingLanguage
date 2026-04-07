@@ -13,7 +13,6 @@ These notes reflect my understanding of core concepts, problem-solving approache
 - Arrays & Strings
 - Pointers & Pointer Arithmetic
 - Structures & Unions
-- File Handling
 - Bitwise Operations
 - Pattern Programs
 - Tricky & Interview Questions
