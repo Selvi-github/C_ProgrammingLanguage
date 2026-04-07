@@ -1,0 +1,81 @@
+Static + Recursion Combined
+Example — static variable in recursive call
+cvoid test() {
+    static int s;
+    auto int L;
+    L = ++s;
+    printf("%d %d\n", L, s);
+    if(L <= 2)
+        test();
+    printf("%d %d\n", L, s);
+}
+
+int main() {
+    test();
+    test();
+    return 0;
+}
+Trace (2 calls to test() from main):
+Call 1 (from main):
+  s=1, L=1 → print 1 1
+  L<=2 → recursive test():
+    s=2, L=2 → print 2 2
+    L<=2 → recursive test():
+      s=3, L=3 → print 3 3
+      L>2, no recursion
+      print 3 3  (return)
+    print 2 3  (return)
+  print 1 3  (return)
+
+Call 2 (from main):
+  s=4, L=4 → print 4 4
+  L>2, no recursion
+  print 4 4
+O/P:
+1 1
+2 2
+3 3
+3 3
+2 3
+1 3
+4 4
+4 4
+
+Key insight: s is static → retains value across all calls. L is auto → fresh copy each call.
+
+Memory diagram:
+main → test①[L=1] → test②[L=2] → test③[L=3]
+                                    ↑
+                              (s shared globally)
+
+Task 1 — Global + Static + Recursion (find output)
+cint g;
+void test() {
+    static int s;
+    auto int L;
+    L = ++s;
+    ++g;
+    printf("%d %d %d\n", L, s, g);
+    if(L <= 2)
+        test();
+    printf("%d %d %d\n", L, s, g);
+}
+
+void abc() {
+    static int as;
+    auto int al;
+    al = ++as;
+    ++g;
+    printf("%d %d %d\n", al, as, g);
+    test();
+    if(al <= 2)
+        abc();
+    printf("%d %d %d\n", al, as, g);
+}
+
+int main() {
+    abc();
+    return 0;
+}
+
+g is global (shared), s and as are static (retained per function), L and al are auto (new each call).
