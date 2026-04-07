@@ -1,0 +1,35 @@
+Void Pointer (Generic Pointer)
+
+Void pointer = a pointer which can point to any type of address and is of void type.
+
+Properties
+
+When we are dealing with one address but don't know what type that address is → use void pointer.
+We can store any type of address in a void pointer.
+Void pointer is a generic pointer — can point to any type of address.
+We cannot apply indirection (*) on void pointer directly.
+Allowed operations on void pointer: Addition, Subtraction, Increment, Decrement (*, ++, --, -3).
+If we want to apply these operations to a specific type, we need to cast first.
+
+cint *test() {
+    int a = 5;
+    return &a;     // returning address of local → dangling pointer risk
+}
+
+void main() {
+    int a = 10;
+    void *vp = &a;       // void pointer pointing to int address
+    printf("%d", *vp);   // CE: cannot dereference void pointer directly
+    printf("%d", *(int*)vp);   // Cast first → 10
+}
+Void pointer to int cast:
+cint *test() {
+    int a = 5;
+    return &a;
+}
+void main() {
+    int a;
+    a = test();        // warning: not returning same
+    printf("%d", *a);  // O/P: GIV (dangling)
+}
+// O/P: CE / undefined
