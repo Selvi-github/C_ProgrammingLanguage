@@ -1,0 +1,39 @@
+Multiple Pointers (Pointer to Pointer)
+int a;          → int type
+int *ptr;       → pointer to integer (int*)
+int **pptr;     → pointer to pointer to integer (int**)
+int ***ppptr;   → pointer to pointer to pointer (int***)
+Declaration
+cint a;
+int *ptr;         // a || 5 || ptr to int
+int **pptr;       // pptr to ptr to int
+                  // integer pointer
+Dereferencing Chain
+a    → 5 (value)
+ptr  → 500 (address of a)
+pptr → 600 (address of ptr)
+
+*ptr  = a  = 5
+*pptr = ptr = 500
+**pptr = *ptr = 5
+Multiple Pointer Example
+cint a;
+int *ptr;
+int **pptr;
+int ***ppptr;
+
+a = 5;
+ptr = &a;        // ptr → a (500)
+pptr = &ptr;     // pptr → ptr (600)
+ppptr = &pptr;   // ppptr → pptr (700)
+
+*ptr   → 5
+*pptr  → 500 (ptr)
+**pptr → 5
+*ppptr → 600 (pptr)
+**ppptr→ 500 (ptr)
+***ppptr→ 5
+pptr Levels
+pptr   || 600 || ptr to ptr → int**
+*pptr  → 500 → int*        (pointer to int)
+**pptr → 5   → int         (value)
