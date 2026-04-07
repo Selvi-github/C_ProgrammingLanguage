@@ -1,0 +1,21 @@
+Dangling Pointer
+
+Dangling pointer = a pointer which is no longer pointing to a valid memory location (the memory it pointed to has been freed/deallocated).
+
+cint *ip;
+{
+    int a = 10;
+    ip = &a;
+    *ip = 35;     // valid here
+}
+// After block: a is destroyed (auto)
+// ip still holds old address → dangling pointer
+char *ip2 = (char *)ip;  // converting — still dangling
+Memory analogy:
+Hotel → room 'a' checked in → ip points to room 501
+After a leaves (block ends) → room is freed
+ip still points to 501 → dangling (memory not reserved by programmer)
+To overcome this problem:
+
+Make the local variable as static — then it persists.
+After a block ends, if we try to access local variable address → dangling pointer issue.
