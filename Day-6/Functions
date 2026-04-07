@@ -1,0 +1,75 @@
+Functions
+What is a Function?
+A function is a named block of code that performs a specific task and can be called (invoked) from elsewhere in the program.
+func()  ←─── function call
+func()  ←─── function definition
+Parts of a Function
+void func()          ← function definition header
+{
+    stmt 2;
+    stmt 3;
+}
+
+Example 1 — Basic Function Call
+cvoid test() {
+    printf("Hello");
+}
+
+void main() {
+    test();     // function call
+}
+// O/P: Hello
+Execution flow:
+main() ──→ [memory] ──→ test()
+           ←──────────────────
+
+Example 2 — Chained Function Calls
+cvoid dept() {
+    printf("I met Mentor\n");
+}
+
+void shortBreak() {
+    printf("I had coffee\n");
+    dept();
+    printf("I came back to shortBreak\n");
+}
+
+void main() {
+    printf("I came to College\n");
+    shortBreak();
+    printf("I came back to College\n");
+}
+Output:
+I came to College
+I had coffee
+I met mentor
+I came back to short
+I came back to college
+
+Purpose / Why Use Functions?
+
+Code reusing — write once, use many times.
+Functions can be defined in any order, but compilation is always top to bottom; execution always starts from main().
+When a function call is executed, control goes to that function's definition and executes it.
+As soon as the function definition is completed, control returns to the function call place.
+A function can be called any number of times.
+Calling a function with less or more arguments than defined will result in a compilation error.
+
+
+Example 3 — Function with Parameters
+cvoid Bday(int x, float y) {
+    printf("%d %.f", x, y);
+}
+
+void main() {
+    int a = 5;
+    float b = 0.5;
+    Bday(a, b);     // O/P: 5 0.5
+}
+Calling variations and errors:
+cBday(5, 2.5);       // O/P: 5 25
+Bday('a', 'b');     // O/P: 97 98
+Bday(3.5, 2.5);     // O/P: 2 25  (implicit truncation)
+Bday(5/2, 5/2);     // O/P: 2 20
+Bday(10, 2013.0);   // O/P: CE (compilation error - too many args maybe)
+Bday();             // CE (Bday missing args)
