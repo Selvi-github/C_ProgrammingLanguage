@@ -1,0 +1,219 @@
+Storage Class Specifiers
+Every variable in C has a storage class that determines:
+PropertyMeaningScopeAccessibility of the variableLifeAvailability (how long it lives)Default ValueWhat value it holds if uninitialized
+
+Storage Class Table
+SpecifierScope (Accessibility)Life (Availability)Default ValueautoWithin the bodyWithin the bodyGIV (garbage)staticWithin the bodyEntire the program0externEntire the programEntire the program0registerWithin the bodyEntire the programGIV
+
+Local vs Global Variables
+c// Local variable (auto / def / local)
+void main() {
+    int a;      // local, auto, default, GIV
+    a = 10;     // assignment
+}
+
+// Global variable (extern / def / 0)
+int a;          // global, extern, default = 0
+void main() {
+    // a is accessible here, value = 0
+}
+
+Scope Resolution
+cvoid main() {
+    int a;          // def / local / auto / GIV  ← ①
+    a = 10;         // assignment
+    {
+        int b;      // def / local / auto / GIV  ← ②
+        b = 20;
+        printf("%d", b);    // prints 22
+        printf("%d", a);    // prints 10 (outer scope)
+    }
+    printf("%d", a);    // prints 10
+    printf("%d", b);    // ← ①: b is not there → CE: undefined symbol 'b'
+}
+
+Rule: Control always searches for the nearest scope first (inner → outer → global).
+
+
+Global Variable Lookup
+cint a = 10;     // global  ← ①
+
+void main() {
+    int a = 7;   // local   ← ②
+    a = 20;              // ← ③
+    {
+        int a;           // ← ④
+        a = 30;
+    }
+    printf("%d", a);
+    printf("%d", b);
+}
+Scenario analysis:
+Scenarios presentOutput①②③④ all present30 30②③④ not there30 20① not thereerror②③ not there30 30①③ not thereGIV 20②④ not there30 GIV①②④ not thereGIV GIV①②③④ not there15
+
+After successful compilation, before execution, control searches for global variables. If available, memory is created for them (default 0).
+
+
+Example — Scope with while loop
+cvoid main() {
+    int a = 1;
+    while(a++ <= 3) {
+        int a = 15;
+        printf("%d", a);
+        ++a;
+    }
+    printf("%d", a);
+}
+// O/P: 15 15 15 5
+Memory diagram:
+main
+a  [1] → [2] → [3] → [4] → [5]
+inner a [15]→[16]  [15]→[16]  [15]→[16]
+
+8. auto vs static — Key Difference
+auto variable
+
+When a function is started, auto variable is created inside the function body.
+As soon as the function is completed, auto variable is destroyed.
+Purpose: when we want to maintain an individual copy inside every function call → use auto.
+
+static variable
+
+In a program, if there is a static variable:
+
+It is created only for the first time.
+From the next time onwards, new memory is NOT created.
+The previously created memory is updated.
+
+
+
+
+Example — static counter
+cvoid test() {
+    int l = 0;          // auto
+    static int s;       // static
+    ++s; ++l;
+    printf("%d %d\n", l, s);
+}
+
+int main() {
+    test();
+    test();
+    test();
+    test();
+    return 0;
+}
+Output:
+1  1
+1  2
+1  3
+Explanation:
+Call 1: l created=0, s created=0 → l=1, s=1 → print 1 1
+Call 2: l created=0(new), s=1(same) → l=1, s=2 → print 1 2
+Call 3: l created=0(new), s=2(same) → l=1, s=3 → print 1 3
+
+Bank Account Example (static use case)
+cvoid withdraw() {
+    static int count = 0;
+    ++count;
+}
+
+// JAN1: withdraw() → count=1
+// JAN2: withdraw() → count=2
+// (static retains value across calls)
+
+Department Counter Example
+cint pct = 0;  // extern (global)
+
+void ECE() {
+    static int eceCount = 0;
+    ++pct;
+    ++eceCount;
+}
+
+void EEE() {
+    static int eeeCount = 0;
+    ++pct;
+    ++eeeCount;
+}
+
+void CSE() {
+    static int cseCount = 0;
+    ++pct;
+    ++cseCount;
+}
+
+id → auto, deptCount → static, Pct → extern (global)
+
+
+9. extern Storage Class
+extern variables are global variables accessible across the entire program and all functions.
+Basic Global Access
+cint pct;        // def / 0 / extern
+void ECE() {
+    ++pct;
+}
+void EEE() {
+    ++pct;
+}
+void CSE() {
+    ++pct;
+}
+void main() {
+    ++pct;
+    ece(); eee(); cse();
+    printf("%d", pct);
+}
+
+extern Across Files
+When a global variable is defined in one file and used in another, use extern keyword:
+c// File 1:
+int pct;         // definition
+void ECE() { ++pct; }
+
+// File 2:
+extern int pct;  // declaration (no memory allocation, just reference)
+void EEE() { ++pct; }
+CE occurs when:
+cvoid ECE() {
+    extern int pct;
+    ++pct;         // CE: pct not defined globally yet
+}
+Fix — define globally:
+cvoid ECE() {
+    extern int RT;
+    ++RT;
+}
+void ECE() {
+    extern int RT;
+    ++RT;
+}
+void main() {
+    extern int pct;
+    ++pct; ECE(); EEE();
+    printf("%d", pct);  // int pct; at end → CE
+}
+int pct;  // definition must exist somewhere
+
+Static Function with Decreasing Counter
+c#include <stdio.h>
+int fun() {
+    static int num = 16;
+    return num--;
+}
+
+int main() {
+    for(fun(); fun(); fun())
+        printf("%d ", fun());
+    return 0;
+}
+// O/P: 14  11  8  5
+Trace:
+num starts at 16
+init:    fun()→16, num becomes 15
+cond:    fun()→15 (truthy), num→14
+body:    fun()→14, print 14, num→13
+inc:     fun()→13, num→12
+cond:    fun()→12 (truthy), num→11
+body:    fun()→11, print 11, num→10
+...continues... print 8, 5
