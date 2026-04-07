@@ -1,0 +1,250 @@
+Data Types
+Tree of Data Types
+Data Types
+├── int
+│   ├── signed
+│   │   ├── short
+│   │   └── long
+│   └── unsigned
+│       ├── short
+│       └── long
+├── char
+│   ├── signed
+│   └── unsigned
+├── float
+└── double
+    └── long double
+
+Format Specifiers by Data Type (Examples from notes)
+Data TypeFormat Specifierint%dfloat%f (IEEE754)char%cshort int%d / %ilong int%ldunsigned%u
+
+Examples
+c// Ex 1: int a
+int a = 5;
+printf("%d", a);   // 5
+
+// Ex 2: char
+char ch = 'A';
+printf("%c", ch);       // A
+printf("%d", ch);       // 65
+
+// Ex 3: Char with binary
+char ch;
+ch = 'A';
+printf("%c %d", ch);    // A  65
+/* 'A' → binary: 01000001 = 65 decimal */
+
+4. Signed vs Unsigned
+Comparison Table
+PropertySignedUnsignedMSBNegative (-ve)Positive (+ve)Range-2ⁿ⁻¹ to 2ⁿ⁻¹ - 10 to 2ⁿ - 1Min valAll 0s (after MSB=1)All 0sMax valAll 1sAll 1s
+
+4-bit Signed Datatype Example
+Name: Datatype {Signed}
+Size: 4 bits
+MSB : -ve
+Min : -8
+Max : +7
+Range: -8 to 7
+Signed DT = -2ⁿ⁻¹ to 2ⁿ⁻¹ - 1
+BitsValue00000000110010200113010040101501106011171000-81001-71010-61011-51100-4
+Bit Patterns:
+
+Min (-8): 1000 — all 0s after MSB
+Max (+7): 0111 — all 1s after MSB=0
+-1: 1111 — all 1s
+
+
+4-bit Unsigned Datatype Example
+Name: Datatype {Unsigned}
+Size: 4 bits
+MSB : +ve
+Min : 0
+Max : 15
+Range: 0 to 15
+Unsigned DT = 0 to 2ⁿ - 1
+Bit Patterns:
+
+Min (0): 0000 — all 0s
+Max (15): 1111 — all 1s
+
+
+5. Character Data Type (char)
+Signed Char
+DT  : char | signed char | char signed
+Size: 8 bits
+Range: -128 to 127
+FS  : %c
+Ex  : 'a', 'A', '+', '5', '-', 'x', ' '
+Examples
+c// 1. signed char
+void main() {
+    signed char ch;
+    ch = 'A';
+    printf("%c", ch);    // A
+    printf("%d", ch);    // 65
+}
+
+// 2. char with integer
+void main() {
+    char ch;
+    ch = 65;
+    printf("%c %d", ch, ch);   // A  65
+    // 65 → 'A'
+}
+
+// 3. Mixing %c and %d
+printf("%c %d", 'A', 'A');     // A  65
+
+// 4.
+printf("%c", 65);               // A
+
+Overflow Behavior
+c// 5. char ch
+void main() {
+    char ch;
+    ch = 100-92;
+    printf("%c %d", ch, ch);   // d  100 (approx)
+}
+
+// 6.
+void main() {
+    char ch;
+    ch = 35;
+    printf("%d", ch);    // 35
+}
+Overflow/Wraparound:
+127 → 127 + 1 = 128 (overflow)
+128 = 127 + 1
+127 = 0111 1111
+  1 = 0000 0001
+      ─────────
+128 = 1000 0000  → interpreted as -128 (signed)
+
+129 → -127
+130 → -126
+131 → -125
+
+Unsigned Char
+DT  : unsigned char | char unsigned
+Size: 8 bits
+Range: 0 to 2⁸-1 = 255
+FS  : %c
+Ex  : '5', '1', '0', ' ', 'n', '5'
+cvoid main() {
+    unsigned char ch;
+    ch = -1;
+    printf("%d", ch);    // 255
+}
+Why 255?
+-1 in binary (16-bit): 1111 1111 1111 1110
+As unsigned 8-bit    : 1111 1111 = 255
+
+6. Integer Data Types
+Short int / short signed int / signed short int
+Size : 16 bits
+FS   : %d (or) %i
+Range: -2¹⁵ to 2¹⁵-1  →  -32768 to 32767
+Ex   : 5, 10, -25, 32760, -32764
+cvoid main() {
+    short int a;
+    a = 32767+1;
+    printf("%d", a);    // -32768  (overflow wraps around)
+}
+
+void main() {
+    short int a;
+    a = 1;
+    while(a != 1) {
+        printf("%d", a);
+    }
+    // O/P: -32767
+}
+
+Unsigned Short int
+Size : 16 bits
+Range: 0 to 2¹⁶-1  →  0 to 65535
+FS   : %u
+cvoid main() {
+    unsigned short int u;
+    u = -1;
+    printf("%u", u);    // 65535
+}
+
+void main() {
+    unsigned short u;
+    for(u=5; u>=0; u--)
+        printf("%u", u);
+    // O/P: 5  4  3  2  1  0  65535 ...
+}
+16-bit Compiler output for -1:
+-1      → FFFF (hex) → 65535 (unsigned)
+-1      → 1111 1111 1111 1111
+65535   → 1111 1111 1111 1111
+
+Long Signed int
+DT   : long signed int
+Size : 32 bits
+Range: -2147483648 to 2147483647
+FS   : %ld  (or)  %li
+Ex   : 5lu, 54l, -55l
+
+Long Unsigned int
+Size : 32 bits
+Range: 0 to 4294967295
+FS   : %lu  (or)  %u
+
+Size Summary Table
+Data Type16-bit32-bit64-bitshort int222int244long int448long long int——8
+
+Compiler-Dependent Sizes
+short int  : 2 bytes (always)
+int        : depends on compiler
+             → 16-bit compiler: 2 bytes
+             → 32-bit compiler: 4 bytes
+long int   : 4 bytes
+
+short int ──→ 16 bit
+int ────────→ 16 bit (16-bit compiler) or 32 bit (32-bit compiler)
+long int ───→ 32 bit
+long long ──→ 32 bit (some) or 64 bit (others)
+
+7. sizeof() Operator
+sizeof() is an operator (not a function) which returns the number of bytes required for a given data type or variable.
+c// Example
+printf("%d", sizeof(char));    // 1
+printf("%d", sizeof(short));   // 2
+printf("%d", sizeof(int));     // 4
+printf("%d", sizeof(long));    // 4 (32-bit) or 8 (64-bit)
+printf("%d", sizeof(3.10));    // 4 (or 8 for double)
+
+Note: sizeof expressions are not allowed inside sizeof().
+
+cvoid main() {
+    short int a = 10;
+    printf("%d", sizeof(a));         // 2
+    printf("%d", sizeof(a=30));      // 2  (expression allowed but not evaluated)
+}
+// O/P: 2  10
+
+8. Type Promotionality Rule
+When performing any operation with 2 arguments of different types, the compiler will:
+
+Promote the lower type value temporarily to the higher type
+Perform the operation
+Return the result in the higher type
+
+signed(int) → always positive result
+sizeof(int) = signed
+→ compiler will promote both args to higher type and perform the operation
+Example
+cvoid main() {
+    signed int S = -3;
+    unsigned int U = 3;
+    if(S > U)
+        printf("Hello");
+    else
+        printf("Hai");
+    // O/P: Hello   (due to type promotionality)
+}
+
+Explanation: signed int gets promoted to unsigned int. -3 as unsigned becomes a very large number → greater than 3 → prints "Hello".
