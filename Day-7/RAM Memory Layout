@@ -1,0 +1,12 @@
+On RAM, every byte has a unique address.
+8 GB RAM = 8 × 1024 MB
+1 MB = 1024 KB
+1 KB = 1024 bytes
+Analogy — Hotel Rooms
+TypeAllocated AddressesOccupied BytesStarting AddressNext Addresschar (1B)201201201202int (2B)301, 302301, 302301303float (4B)401,402,403,404401,402,403,404401405
+
+Address Types per Data Type
+Address of int    → int*    type
+Address of char   → char*   type
+Address of signed → signed* type
+Address of long   → long*   type
